@@ -100,6 +100,7 @@ button {
 </head>
 <body>
 
+<!-- Audio -->
 <audio id="bgMusic" loop preload="auto">
     <source src="love.mp3" type="audio/mpeg">
 </audio>
@@ -125,7 +126,7 @@ function moveNo() {
 function sayYes() {
     const music = document.getElementById("bgMusic");
     music.volume = 0.8;
-    music.play().catch(err => console.log("Audio playback blocked:", err));
+    music.play().catch(err => console.log("Audio blocked:", err));
 
     document.querySelector(".container").innerHTML = `
         <h1>Sanu ko chan 😍💖</h1>
@@ -149,7 +150,7 @@ function sayYes() {
     startFireworks();
 }
 
-// Fireworks / crackers
+// Fireworks effect
 function startFireworks() {
     setInterval(() => {
         const fw = document.createElement("div");
@@ -197,7 +198,7 @@ function createSparkle() {
     setTimeout(() => sparkle.remove(), 2000);
 }
 
-// Continuous effects
+// Continuous floating effects
 setInterval(createHeart, 300);
 setInterval(createBalloon, 500);
 setInterval(createSparkle, 150);
@@ -205,6 +206,7 @@ setInterval(createSparkle, 150);
 
 </body>
 </html>
+
 
 
 
