@@ -7,17 +7,9 @@
 body {
     margin: 0;
     height: 100vh;
-    background: linear-gradient(45deg, #ff758c, #ff7eb3, #ffefba, #00c6ff, #7f00ff);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    background: #000; /* black background */
     font-family: 'Segoe UI', sans-serif;
     overflow: hidden;
-}
-
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
 }
 
 .container {
@@ -57,11 +49,29 @@ button {
     position: fixed;
     animation: float 5s linear infinite;
     pointer-events: none;
+    color: red;
+    font-size: 20px;
 }
 
 @keyframes float {
     from { transform: translateY(100vh) rotate(0deg); opacity: 1; }
     to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+.sparkle {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 1.5s infinite;
+    pointer-events: none;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 0; transform: scale(2); }
 }
 
 .firework {
@@ -81,7 +91,6 @@ button {
 </head>
 <body>
 
-<!-- AUDIO -->
 <audio id="bgMusic" loop preload="auto">
     <source src="love.mp3" type="audio/mpeg">
 </audio>
@@ -107,11 +116,8 @@ function moveNo() {
 function sayYes() {
     const music = document.getElementById("bgMusic");
     music.volume = 0.8;
-
-    // Play music after user click
     music.play().catch(err => console.log("Audio playback blocked:", err));
 
-    // Replace container content
     document.querySelector(".container").innerHTML = `
         <h1>Sanu ko chan 😍💖</h1>
         <h2>You just said YES 💍</h2>
@@ -134,7 +140,7 @@ function sayYes() {
     startFireworks();
 }
 
-// Fireworks effect
+// Fireworks / crackers effect
 function startFireworks() {
     setInterval(() => {
         const fw = document.createElement("div");
@@ -147,24 +153,36 @@ function startFireworks() {
     }, 200);
 }
 
-// Floating hearts effect
+// Floating hearts
 function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "❤️";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 25 + 15 + "px";
-    heart.style.animationDuration = (Math.random() * 5 + 4) + "s"; // random speed
-    heart.style.color = `hsl(${Math.random()*360}, 100%, 70%)`; // random color
+    heart.style.fontSize = Math.random() * 30 + 15 + "px"; // random size
+    heart.style.animationDuration = (Math.random() * 5 + 4) + "s";
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 8000);
 }
 
-// Continuous hearts
-setInterval(createHeart, 200);
+// Floating sparkles
+function createSparkle() {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = Math.random() * 100 + "vh";
+    sparkle.style.width = sparkle.style.height = (Math.random()*3 + 2) + "px";
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 2000);
+}
+
+// Continuous hearts and sparkles
+setInterval(createHeart, 300);
+setInterval(createSparkle, 150);
 </script>
 
 </body>
 </html>
+
 
 
