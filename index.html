@@ -7,9 +7,12 @@
 body {
     margin: 0;
     height: 100vh;
-    background: #000; /* black background */
     font-family: 'Segoe UI', sans-serif;
     overflow: hidden;
+
+    /* Set full background image */
+    background: url('her.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 .container {
@@ -19,9 +22,10 @@ body {
     text-align: center;
     color: white;
     z-index: 10;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
 }
 
-img {
+img.profile {
     width: 160px;
     height: 160px;
     border-radius: 50%;
@@ -48,6 +52,7 @@ button {
 .heart, .balloon, .sparkle {
     position: fixed;
     pointer-events: none;
+    z-index: 5;
 }
 
 .heart {
@@ -106,9 +111,9 @@ button {
 </audio>
 
 <div class="container">
-    <img src="her.jpg" alt="SANU KO CHAN">
-    <h1>Dear SANU KO CHAN ❤️</h1>
-    <h2>WILL YOU BE MINE FOREVER? 💍</h2>
+    <img src="her.jpg" class="profile" alt="Sanu ko chan">
+    <h1>Dear Sanu ko chan ❤️</h1>
+    <h2>Will you be mine forever? 💍</h2>
 
     <button id="yes" onclick="sayYes()">YES</button>
     <button id="no" onmouseover="moveNo()">NO</button>
@@ -129,9 +134,9 @@ function sayYes() {
     music.play().catch(err => console.log("Audio blocked:", err));
 
     document.querySelector(".container").innerHTML = `
-        <h1>SANU KO CHAN 😍💖</h1>
+        <h1>Sanu ko chan 😍💖</h1>
         <h2>You just said YES 💍</h2>
-        <h3>I PROMISE TO LOVE YOU FOREVER ❤️</h3>
+        <h3>I promise to love you forever ❤️</h3>
 
         <a href="https://wa.me/?text=💖%20Sanu%20ko%20chan,%20I%20love%20you!%20You%20just%20made%20my%20world%20complete%20💍❤️"
            target="_blank"
