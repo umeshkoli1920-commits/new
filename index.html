@@ -1,98 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Happy Propose Day ❤️</title>
-
-<style>
-body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
-}
-
-.container {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    color: white;
-}
-
-img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 4px solid white;
-    margin-bottom: 15px;
-}
-
-button {
-    padding: 12px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    margin: 10px;
-}
-
-#yes { background: #28a745; color: white; }
-#no {
-    background: #dc3545;
-    color: white;
-    position: absolute;
-}
-
-.heart {
-    position: fixed;
-    animation: float 4s linear infinite;
-}
-
-@keyframes float {
-    from { transform: translateY(100vh); opacity: 1; }
-    to { transform: translateY(-10vh); opacity: 0; }
-}
-
-.firework {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    animation: explode 1s ease-out forwards;
-}
-
-@keyframes explode {
-    from { transform: scale(1); opacity: 1; }
-    to { transform: scale(20); opacity: 0; }
-}
-</style>
-</head>
-
-<body>
-
-<audio autoplay loop>
-    <source src="love.mp3" type="audio/mpeg">
-</audio>
-
-<div class="container">
-    <img src="her.jpg" alt="Sanu ko chan">
-    <h1>Dear Sanu ko chan ❤️</h1>
-    <h2>Will you be mine forever? 💍</h2>
-
-    <button id="yes" onclick="sayYes()">YES</button>
-    <button id="no" onmouseover="moveNo()">NO</button>
-</div>
-
 <script>
-function moveNo() {
-    const no = document.getElementById("no");
-    no.style.left = Math.random() * (window.innerWidth - no.offsetWidth) + "px";
-    no.style.top = Math.random() * (window.innerHeight - no.offsetHeight) + "px";
-}
-
 function sayYes() {
+    const music = document.getElementById("bgMusic");
+    music.play();
+
     document.body.innerHTML = `
         <div style="
             height:100vh;
@@ -124,30 +34,4 @@ function sayYes() {
     `;
     startFireworks();
 }
-
-function startFireworks() {
-    setInterval(() => {
-        const fw = document.createElement("div");
-        fw.className = "firework";
-        fw.style.background = `hsl(${Math.random()*360}, 100%, 50%)`;
-        fw.style.left = Math.random() * 100 + "vw";
-        fw.style.top = Math.random() * 100 + "vh";
-        document.body.appendChild(fw);
-        setTimeout(() => fw.remove(), 1000);
-    }, 200);
-}
-
-// Floating hearts
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 15 + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 4000);
-}, 300);
 </script>
-
-</body>
-</html>
